@@ -7,29 +7,12 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Survey</title>
 
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 
 <body>
-	<!-- //////////////////MODAL TEST////////////// -->
-	<div class="modal" id="myModal">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button class="close" type="button" data-dismiss="#modal">X</button>
-
-					<h2 class="modal-title">MODAL TEST</h2>
-					<div class="modal-body">
-						<p>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum mollitia voluptatem cum adipisci sed accusantium, architecto
-							non modi, ipsa, quaerat atque. Dolorem mollitia harum labore odio rem repellat sunt earum.
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 
 
 	<div class="jumbotron jumbotron-fluid">
@@ -53,11 +36,11 @@
 						<div class="card-body">
 							<div class="form-group">
 								<label for="name">Your Name</label>
-								<input type="input" name="name" class="form-control" placeholder="Enter your name">
+								<input type="input" id="userName" class="form-control" placeholder="Enter your name">
 							</div>
 							<div class="form-group">
 								<label for="imageLink">Link address to your image</label>
-								<input type="link" name="link" class="form-control" placeholder="Submit a link, to an image">
+								<input type="link" id="userPhoto" class="form-control" placeholder="Submit a link, to an image">
 							</div>
 						</div>
 					</div>
@@ -69,87 +52,217 @@
 					<div class="row">
 
 						<div class="col-md-6">
-							<h4>Do you like to dance?</h4>
-							<input type="radio" name="q1" value="1" id="q1a"> Yes <br>
-							<input type="radio" name="q1" value="2" id="q1b"> No <br>
 
-							<h4>Do you remember your dreams?</h4>
-							<input type="radio" name="q2" value="1" id="q2a"> Yes <br>
-							<input type="radio" name="q2" value="2" id="q2b"> No <br>
 
-							<h4>What is your favorite color?</h4>
-							<input type="radio" name="q3" value="1" id="q3a"> Red <br>
-							<input type="radio" name="q3" value="2" id="q3b"> Blue <br>
+							<div class="input-field col s12">
+								<h4>Question 1</h4>
+								<h5>Do you like to dance?</h5>
+								<select id="question1">
+									<option value="" disabled selected>Choose your option</option>
+									<option value="1">1 (Strongly Disagree)</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5 (Strongly Agree)</option>
+								</select>
+							</div>
 
-							<h4>What is your favorite food out of the list?</h4>
-							<input type="radio" name="q4" value="1" id="q4a"> Cheese <br>
-							<input type="radio" name="q4" value="2" id="q4b"> Steak <br>
-
-							<h4>What is your dream vacation?</h4>
-							<input type="radio" name="q5" value="1" id="q5a"> Las Vegas <br>
-							<input type="radio" name="q5" value="2" id="q5b"> Hawaii <br>
+							<div class="input-field col s12">
+								<h4>Question 2</h4>
+								<h5>Do you remember your dreams?</h5>
+								<select id="question2">
+									<option value="" disabled selected>Choose your option</option>
+									<option value="1">1 (Strongly Disagree)</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5 (Strongly Agree)</option>
+								</select>
+							</div>
+							<div class="input-field col s12">
+								<h4>Question 3</h4>
+								<h5>What is your favorite color?</h5>
+								<select id="question3">
+									<option value="" disabled selected>Choose your option</option>
+									<option value="1">1 (Strongly Disagree)</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5 (Strongly Agree)</option>
+								</select>
+							</div>
+							<div class="input-field col s12">
+								<h4>Question 4</h4>
+								<h5>What is your favorite food?</h5>
+								<select id="question4">
+									<option value="" disabled selected>Choose your option</option>
+									<option value="1">1 (Strongly Disagree)</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5 (Strongly Agree)</option>
+								</select>
+							</div>
+							<div class="input-field col s12">
+								<h4>Question 5</h4>
+								<h5>What is your dream vacation?</h5>
+								<select id="question5">
+									<option value="" disabled selected>Choose your option</option>
+									<option value="1">1 (Strongly Disagree)</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5 (Strongly Agree)</option>
+								</select>
+							</div>
 						</div>
+
 						<!-- /////////////////SURVEY SPLIT /////////////////// -->
+
 						<div class="col-md-6">
-							<h4>What is your favorite superpower?</h4>
-							<input type="radio" name="q6" value="1" id="q6a"> Super Strength<br>
-							<input type="radio" name="q6" value="2" id="q6b"> Fast <br>
-							<h4>Pepsi or Coke?</h4>
-							<input type="radio" name="q7" value="1" id="q7a"> Pepsi <br>
-							<input type="radio" name="q7" value="2" id="q7b"> Coke <br>
-							<h4>What's your favorite food from the list?</h4>
-							<input type="radio" name="q8" value="1" id="q8a"> Spaghetti <br>
-							<input type="radio" name="q8" value="2" id="q8b"> Pizza <br>
-							<h4>Favorite type of music from the list?</h4>
-							<input type="radio" name="q9" value="1" id="q9a"> Country <br>
-							<input type="radio" name="q9" value="2" id="q9b"> Hip Hop <br>
-							<h4>Your favorite animal?</h4>
-							<input type="radio" name="q10" value="1" id="q10a"> Cats <br>
-							<input type="radio" name="q10" value="2" id="q10b"> Dogs <br>
+							<div class="input-field col s12">
+								<h4>Question 6</h4>
+								<h5>What is your favorite superpower?</h5>
+								<select id="question6">
+									<option value="" disabled selected>Choose your option</option>
+									<option value="1">1 (Strongly Disagree)</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5 (Strongly Agree)</option>
+								</select>
+							</div>
+							<div class="input-field col s12">
+								<h4>Question 7</h4>
+								<h5>Pepsi or Coke?</h5>
+								<select id="question7">
+									<option value="" disabled selected>Choose your option</option>
+									<option value="1">1 (Strongly Disagree)</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5 (Strongly Agree)</option>
+								</select>
+							</div>
+							<div class="input-field col s12">
+								<h4>Question 8</h4>
+								<h5>What's your favorite food from the list?</h5>
+								<select id="question8">
+									<option value="" disabled selected>Choose your option</option>
+									<option value="1">1 (Strongly Disagree)</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5 (Strongly Agree)</option>
+								</select>
+							</div>
+							<div class="input-field col s12">
+								<h4>Question 9</h4>
+								<h5>Favorite type of music from the list?</h5>
+								<select id="question9">
+									<option value="" disabled selected>Choose your option</option>
+									<option value="1">1 (Strongly Disagree)</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5 (Strongly Agree)</option>
+								</select>
+							</div>
+							<div class="input-field col s12">
+								<h4>Question 10</h4>
+								<h5>Your favorite animal?</h5>
+								<select id="question10">
+									<option value="" disabled selected>Choose your option</option>
+									<option value="1">1 (Strongly Disagree)</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5 (Strongly Agree)</option>
+								</select>
+							</div>
 						</div>
+						<br>
+						
 					</div>
 				</div>
 			</div>
 
-			<input id="submit" type="submit" class="btn btn-primary btn-lg btn-block" value="Submit Answers">
+			<input id="submitButton" type="submit" class="btn btn-primary btn-lg btn-block" value="Submit Answers">
 
 		</form>
 		<br><br>
 
+		<!-- //////////////////MODAL TEST////////////// -->
+		<div class="modal" id="myModal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button class="close" type="button" data-dismiss="#modal">X</button>
+
+						<h2 class="modal-title">MODAL TEST</h2>
+						<div id="matchName"></div>
+						<div id="matchImage"></div>
+						<div id="results"></div>
+						<div class="modal-body">
+							<p>
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum mollitia voluptatem cum adipisci sed accusantium, architecto
+								non modi, ipsa, quaerat atque. Dolorem mollitia harum labore odio rem repellat sunt earum.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
 
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 <script>
-	// This function will gather data from the survey for future matching in the friends.js
-	function submitAnswers() {
-		event.preventDefault();
-		var q1 = parseInt(document.forms["quizForm"]["q1"].value);
-		var q2 = parseInt(document.forms["quizForm"]["q2"].value);
-		var q3 = parseInt(document.forms["quizForm"]["q3"].value);
-		var q4 = parseInt(document.forms["quizForm"]["q4"].value);
-		var q5 = parseInt(document.forms["quizForm"]["q5"].value);
-		var q6 = parseInt(document.forms["quizForm"]["q6"].value);
-		var q7 = parseInt(document.forms["quizForm"]["q7"].value);
-		var q8 = parseInt(document.forms["quizForm"]["q8"].value);
-		var q9 = parseInt(document.forms["quizForm"]["q9"].value);
-		var q10 = parseInt(document.forms["quizForm"]["q10"].value);
-		var name = document.forms["quizForm"]["name"].value;
-		var link = document.forms["quizForm"]["link"].value;
-		var questions = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10];
-		var userScore = q1 + q2 + q3 + q4 + q5 + q6 + q7 + q8 + q9 + q10;
 
-		console.log("Name: ", name);
-		console.log("Link Address: ", link);
-		console.log("UserScore: ", userScore);
+		// This function will gather data from the survey for future matching in the friends.js
+		$('#submitButton').on('click', function(event) {
+			event.preventDefault();
+			// Gather user inputs
+			var userInput = {
+				name: $('#userName').val().trim(),
+				photo: $('#userPhoto').val().trim(),
+				scores:[
+					$('#question1').val(),
+					$('#question2').val(),
+					$('#question3').val(),
+					$('#question4').val(),
+					$('#question5').val(),
+					$('#question6').val(),
+					$('#question7').val(),
+					$('#question8').val(),
+					$('#question9').val(),
+					$('#question10').val()
+				]
+			};
 
-		alert(
-			"Hello " + name + "!\n" +
-			link + "\n" +
-			"Your Total: " + userScore);
-	}
+			$.post('/api/friends', userInput)
+      	.done(function(data) {
+      		$('#matchName').html(data.name);
+		    	$("#matchImage").attr("src", data.photo);
+      		$('#results').modal('toggle');
+				});
+			console.log("Name: ", userName.name);
+			console.log("Link Address: ", userInput.photo);
+			console.log("scores: ", userInput.scores);
+
+			alert(
+				"Hello " + userName.name + "!\n" +
+				userInput.photo + "\n" +
+				"Your Total: " + userInput.scores);
+		});
+	
+
 </script>
 
 <style>
+
 	#submit {
 		box-shadow: 3px 3px black;
 	}

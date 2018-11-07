@@ -1,42 +1,38 @@
-var friendData = require('../data/friends.js');
-var path = require('path');
+// Import the list of friend entries
+var friends = require('../data/friends.js');
 
-module.exports = function (app) {
-	app.get('/api/friends', function (req, res) {
+// Export API routes
+module.exports = function(app) {
+	app.get('/api/friends', function(req, res) {
 		res.json(friends);
 	});
 
-	app.post('/api/friends', function (req, res) {
+	// Add new friend entry
+	app.post('/api/friends', function(req, res) {
+		var userInput = req.body;
+		var userResponses = userInput.scores;
+		var matchName = '';
+		var matchImage = '';
+		var totalDifference = 10000; 
 
-		var greatMatch = {
-			name: "",
-			image: "",
-			matchDifference: 1000
-		};
-		var usrData = req.body;
-		var usrScores = usrData.scores;
+		// Examine all existing friends in the list
+		for (var i = 0; i < friends.length; i++) {
+			var diff = 0;
+			for (var j = 0; j < userResponses.length; j++) {
+				diff += Math.abs(friends[i].scores[j] - userResponses[j]);
+			}
 
-		var totalDifference = 0;
-
-		//loops through the friendsList array
-		for (var i = 0; i < friendsList.length - 1; i++) {
-			console.log(friendsList[i].name);
-			totalDifference = 0;
-
-			//this will compare the data to find the match
-			for (var j = 0; j < 10; j++) {
-				totalDifference += Math.abs(parseInt(usrScores[j]) - parseInt(friendsList[i].scores[j]));
-
-				if (totalDifference <= greatMatch.friendDifference) {
-					greatMatch.name = friendsList[i].name;
-					greatMatch.photo = friendsList[i].photo;
-					greatMatch.matchDifference = totalDifference;
-				}
+			if (diff < totalDifference) {
+				totalDifference = diff;
+				matchName = friends[i].name;
+				matchImage = friends[i].photo;
 			}
 		}
 
-		friendsList.push(usrData);
+		// Add new user
+		friends.push(userInput);
 
-		res.json(greatMatch);
+		// Send appropriate response
+		res.json({status: 'OK', matchName: matchName, matchImage: matchImage});
 	});
 };
