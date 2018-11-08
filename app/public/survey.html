@@ -221,10 +221,9 @@
 
 <script>
 
-		// This function will gather data from the survey for future matching in the friends.js
+		// gathering data from user
 		$('#submitButton').on('click', function(event) {
 			event.preventDefault();
-			// Gather user inputs
 			var userInput = {
 				name: $('#userName').val().trim(),
 				photo: $('#userPhoto').val().trim(),
