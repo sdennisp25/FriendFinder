@@ -7,7 +7,6 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Survey</title>
 
-
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
@@ -23,8 +22,8 @@
 
 	<div class="container">
 
-		<!-- Attempted to test the modal -->
-		<a href="#" data-toggle="modal" data-target="#myModal">MODAL TEST...</a>
+		<!-- Saved to test modal -->
+		<!-- <a href="#" data-toggle="modal" data-target="#myModal">MODAL TEST...</a> -->
 
 		<br>
 
@@ -182,7 +181,7 @@
 							</div>
 						</div>
 						<br>
-						
+
 					</div>
 				</div>
 			</div>
@@ -193,22 +192,22 @@
 		<br><br>
 
 		<!-- //////////////////MODAL TEST////////////// -->
-		<div class="modal" id="myModal">
+		<div class="modal fade" id="myModal">
 			<div class="modal-dialog">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<div class="modal-content">
 					<div class="modal-header">
-						<button class="close" type="button" data-dismiss="#modal">X</button>
-
-						<h2 class="modal-title">MODAL TEST</h2>
 						<div id="matchName"></div>
 						<div id="matchImage"></div>
-						<div id="results"></div>
-						<div class="modal-body">
-							<p>
+						<div id="results" data-toggle="modal" data-target="#myModal"></div>
+						<!-- <img src="https://i.redd.it/so5cg125lh001.jpg"> -->
+						<!-- Saved for testing -->
+						<!-- <div class="modal-body">
+							<p> 
 								Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum mollitia voluptatem cum adipisci sed accusantium, architecto
 								non modi, ipsa, quaerat atque. Dolorem mollitia harum labore odio rem repellat sunt earum.
 							</p>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
@@ -221,47 +220,61 @@
 
 <script>
 
-		// gathering data from user
-		$('#submitButton').on('click', function(event) {
-			event.preventDefault();
-			var userInput = {
-				name: $('#userName').val().trim(),
-				photo: $('#userPhoto').val().trim(),
-				scores:[
-					$('#question1').val(),
-					$('#question2').val(),
-					$('#question3').val(),
-					$('#question4').val(),
-					$('#question5').val(),
-					$('#question6').val(),
-					$('#question7').val(),
-					$('#question8').val(),
-					$('#question9').val(),
-					$('#question10').val()
-				]
-			};
+	// gathering data from user
+	$('#submitButton').on('click', function (event) {
+		event.preventDefault();
+		var userInput = {
+			name: $('#userName').val().trim(),
+			photo: $('#userPhoto').val().trim(),
+			scores: [
+				$('#question1').val(),
+				$('#question2').val(),
+				$('#question3').val(),
+				$('#question4').val(),
+				$('#question5').val(),
+				$('#question6').val(),
+				$('#question7').val(),
+				$('#question8').val(),
+				$('#question9').val(),
+				$('#question10').val()
+			]
+		};
 
-			$.post('/api/friends', userInput)
-      	.done(function(data) {
-      		$('#matchName').html(data.name);
-		    	$("#matchImage").attr("src", data.photo);
-      		$('#results').modal('toggle');
-				});
-			console.log("Name: ", userName.name);
-			console.log("Link Address: ", userInput.photo);
-			console.log("scores: ", userInput.scores);
+		//saved for testing/troubleshooting the values from the survey
+		// var q1 = parseInt(userInput.scores[0]);
+		// var q2 = parseInt(userInput.scores[1]);
+		// var q3 = parseInt(userInput.scores[2]);
+		// var q4 = parseInt(userInput.scores[3]);
+		// var q5 = parseInt(userInput.scores[4]);
+		// var q6 = parseInt(userInput.scores[5]);
+		// var q7 = parseInt(userInput.scores[6]);
+		// var q8 = parseInt(userInput.scores[7]);
+		// var q9 = parseInt(userInput.scores[8]);
+		// var q10 = parseInt(userInput.scores[9]);
+		// var total = (q1 + q2 + q3 + q4 + q5 + q6 + q7 + q8 + q9 + q10);
+		// console.log(total)
 
-			alert(
-				"Hello " + userName.name + "!\n" +
-				userInput.photo + "\n" +
-				"Your Total: " + userInput.scores);
-		});
-	
+		$.post('/api/friends', userInput)
+			.done(function (data) {
+				var images = $("<img>")
+				$('#matchName').html(data.name);
+				$('#matchImage').attr("src", data.photo);
+				$('#myModal').modal();
+			});
+
+		console.log("Name: ", userInput.name);
+		console.log("Link Address: ", userInput.photo);
+		console.log("scores: ", userInput.scores);
+		// alert(
+		// 	"Hello " + userInput.name + "!\n" +
+		// 	userInput.photo + "\n" +
+		// 	"Your Total: " + userInput.scores);
+	});
+
 
 </script>
 
 <style>
-
 	#submit {
 		box-shadow: 3px 3px black;
 	}
@@ -276,7 +289,3 @@
 		text-align: center;
 	}
 </style>
-
-
-
-</html>
